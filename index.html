@@ -47,28 +47,59 @@
 
     <script src="https://unpkg.com/scrollreveal"></script>
     <script>
-        let menu=document.querySelector('#menu-icon');
-        let navbar=document.querySelector('.navbar');
+                const menu = document.querySelector('#menu-icon');
+        const navbar = document.querySelector('.navbar');
 
-        menu.onclick=()=>{
-            menu.classList.toggle('bx-x');
-            navbar.classList.toggle('open')
-        };
-
-        const sr=ScrollReveal({
-            distance: '40px',
-            duration: 2600,
-            reset: true
+        // Menambahkan efek klik pada menu untuk menampilkan atau menyembunyikan navbar
+        menu.addEventListener('click', function() {
+            this.classList.toggle('active');
+            navbar.classList.toggle('show');
         });
-        sr.reveal('.logo',{delay:200, origin:'left'});
-        sr.reveal('.navbar',{delay:300, origin:'top'});
-        sr.reveal('.menu-btn',{delay:420, origin:'right'});
 
-        sr.reveal('.home-text span',{delay:460, origin:'top'});
-        sr.reveal('.home-text h2',{delay:460, origin:'left'});
-        sr.reveal('.home-text p',{delay:460, origin:'right'});
-        sr.reveal('.main-btn',{delay:480, origin:'left'});
-        sr.reveal('.home-img',{delay:800, origin:'right'});
+        // Inisialisasi ScrollReveal untuk animasi scroll
+        const scrollEffect = ScrollReveal({
+            distance: '50px',
+            duration: 2500,
+            reset: false // Mengubah reset menjadi false untuk efek yang lebih permanen
+        });
+
+        // Menggunakan ScrollReveal untuk berbagai elemen
+        scrollEffect.reveal('.logo', {delay: 100, origin: 'bottom'});
+        scrollEffect.reveal('.navbar', {delay: 200, origin: 'right'});
+        scrollEffect.reveal('.menu-btn', {delay: 300, origin: 'left'});
+        scrollEffect.reveal('.home-text span', {delay: 350, origin: 'bottom'});
+        scrollEffect.reveal('.home-text h2', {delay: 400, origin: 'right'});
+        scrollEffect.reveal('.home-text p', {delay: 450, origin: 'left'});
+        scrollEffect.reveal('.main-btn', {delay: 500, origin: 'bottom'});
+        scrollEffect.reveal('.home-img', {delay: 550, origin: 'top'});
+
+        // Menambahkan efek paralaks pada gambar utama
+        window.addEventListener('scroll', function() {
+            const homeImg = document.querySelector('.home-img');
+            homeImg.style.transform = `translateY(${window.scrollY * 0.5}px)`;
+        });
+
+        // Menambahkan efek smooth scroll pada semua link
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Pastikan elemen navbar tetap terlihat pada perangkat mobile
+        const checkNavbarVisibility = () => {
+            if (window.innerWidth <= 768) {
+                navbar.classList.add('show');
+            } else {
+                navbar.classList.remove('show');
+            }
+        };
+        window.addEventListener('resize', checkNavbarVisibility);
+        checkNavbarVisibility(); // Panggil fungsi ini untuk memeriksa saat halaman pertama kali dimuat
+
     </script>
 </body>
 </html>
