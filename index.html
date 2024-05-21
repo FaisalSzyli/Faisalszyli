@@ -7,49 +7,57 @@
     <link rel="stylesheet" type="text/css" href="index.css">
     <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
-<link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />    
-
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />    
 </head>
 <body>
     <header>
         <a href="#" class="logo"><span>I</span>chang</a>
         <ul class="navbar">
-            <li><a href="#" class="active">Home</a></li>
-            <li><a href="#">About</a></li>
-            <li><a href="#">Contacts</a></li>
+            <li><a href="#home" class="active">Home</a></li>
+            <li><a href="#about">About</a></li>
         </ul>
-
         <div class="menu-btn">
             <span>INTRO</span>
             <div class="bx bx-menu" id="menu-icon"></div>
         </div>
     </header>
 
-    <section class="home">
+    <section class="home" id="home">
         <div class="home-text">
             <span>Pelajar Developer</span>
             <h2>Faisal Sazyli</h2>
-            <p>Saya adalah seorang pelajar, bersekolah di SMKN 1 Rengas Dengklok.
-                Bidang Keahlian Teknik Jaringan Komputer & Pemrograman Web,
-                ini adalah project yang saya kembangkan, untuk informasi lebih lanjut silahkan hubungi saya. </p>
-                <div class="main-btn">
-                    <a href="https://www.instagram.com/faisalszyli/" class="btn">
-                        <i class="fa-brands fa-instagram"></i>My Instagram</a>
-                    <a href="#" class="btn two">Hubungi saya</a>
-                </div>
+            <p>
+                I am a student at SMKN 1 Rengas Dengklok, specializing in Computer Network Engineering and Web Programming. For more information, please click About Me.
+            </p>
+            <div class="main-btn">
+                <a href="https://www.instagram.com/faisalszyli/" class="btn">
+                    <i class="fa-brands fa-instagram"></i> My Instagram</a>
+                <a href="#about" class="btn two">About Me</a>
+            </div>
         </div>
 
         <div class="home-img">
-            <img  src="desian.png" >
+            <img src="desian.png" alt="Faisal Sazyli">
         </div>
+    </section>
+
+    <section class="about" id="about">
+        <h2>About Me</h2>
+        <p>
+            <strong>Name:</strong> Ahmad Faisal Sazyli<br>
+            <strong>Class:</strong> 12th Grade, Computer Network Engineering (TKJ 1)<br>
+            <strong>Address:</strong> Rengas Dengklok, Karawang<br>
+            <strong>Date of Birth:</strong> March 22, 2007<br>
+            <strong>Ambition:</strong> To become a professional web developer
+        </p>
     </section>
 
     <script src="https://unpkg.com/scrollreveal"></script>
     <script>
-                const menu = document.querySelector('#menu-icon');
+        const menu = document.querySelector('#menu-icon');
         const navbar = document.querySelector('.navbar');
 
         // Menambahkan efek klik pada menu untuk menampilkan atau menyembunyikan navbar
@@ -77,7 +85,7 @@
 
         // Menambahkan efek paralaks pada gambar utama
         window.addEventListener('scroll', function() {
-            const homeImg = document.querySelector('.home-img');
+            const homeImg = document.querySelector('.home-img img');
             homeImg.style.transform = `translateY(${window.scrollY * 0.5}px)`;
         });
 
@@ -93,15 +101,14 @@
 
         // Pastikan elemen navbar tetap terlihat pada perangkat mobile
         const checkNavbarVisibility = () => {
-            if (window.innerWidth <= 768) {
-                navbar.classList.add('show');
+            if (window.innerWidth <= 850) {
+                navbar.classList.remove('show');
             } else {
                 navbar.classList.remove('show');
             }
         };
         window.addEventListener('resize', checkNavbarVisibility);
         checkNavbarVisibility(); // Panggil fungsi ini untuk memeriksa saat halaman pertama kali dimuat
-
     </script>
 </body>
 </html>
